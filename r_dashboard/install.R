@@ -1,0 +1,6 @@
+install.packages("shinydashboard")
+install.packages("dplyr")
+install.packages("plotly")
+install.packages("tidyverse")
+install.packages("lubridate")
+install.packages("DT")
