@@ -71,25 +71,25 @@ ui <- dashboardPage(
     ),
     ## Body content
     dashboardBody(
-        tags$head(tags$style(HTML(".content {height: 90px; margin: 0px; padding: 0px}"))),  
+        tags$head(tags$style(HTML(".content {height: 90px; margin: 3px; padding: 0px}"))),  
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
-            tags$head(tags$style(HTML(".small-box {height: 90px; margin: 0px; padding: 0px}"))),            
+            tags$head(tags$style(HTML(".small-box {height: 90px; margin: 3px; padding: 0px}"))),            
             valueBoxOutput("gcse_kpi", width = 4),
             valueBoxOutput("gce_kpi", width = 4),
             valueBoxOutput("vq_kpi", width = 4)
         ),
         #qual level table and plot
         fluidRow(
-            tags$head(tags$style(HTML('.box {margin: 0px;} 
-                                       .box-body {margin: 0px; padding: 0px;}'
+            tags$head(tags$style(HTML('.box {margin: 3px;padding: 0px;} 
+                                       .box-body {margin: 3px; padding: 0px;}'
                                 ))),
             box(title = "Qual Level Cash-In - Table", width = 6, height = "410px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
             box(title = "Qual Level Cash-In - Plot", width = 6, height = "410px", status = "primary",  plotlyOutput("qual_cash_in_plot", height = "365px"))
         ),
         #paper level table and plot
         fluidRow(
-            tags$head(tags$style(HTML('.box {margin: 0px;}'))),
+            tags$head(tags$style(HTML('.box {margin: 3px;padding: 0px;}'))),
             box(title = "Paper Level - Table", width = 6, height = "410px", status = "primary",  DT::dataTableOutput("paper_table")),
             box(title = "Paper Level - Plot", width = 6, height = "410px", status = "primary",  plotlyOutput("paper_plot", height = "365px"))
         )
@@ -413,7 +413,7 @@ server <- function(input, output, session) {
             pp <- paper_plot_data %>% 
                     plot_ly(x= ~date, y= ~marked_actual, type = "scatter", mode = "lines+markers", name="marked") %>%
                     add_trace(y = ~marked_prediction, name="if linear", mode = "lines") %>%
-                    add_lines(x=c(Awarding, Awarding), y=c(0, max), name = "award date") %>%
+                    add_lines(x=c(Awarding, Awarding), y=c(0, max), name = "Award Date") %>%
                     layout(yaxis = list(title = "Candidates Marked"), yaxis = list(title = "Date"), title=paste(paper_name, paper_code))
             
             
