@@ -45,7 +45,8 @@ qual_paper_lookup <-  read_csv("lookup.csv") %>%
 #shinydashboard app UI section
 ui <- dashboardPage(
     #header
-    dashboardHeader(title = "Marking Progress"),
+    dashboardHeader(tags$head(tags$style(HTML(".main_header {height: 35px; margin: 3px; padding: 0px}"))),  
+                    title = "Marking Progress"),
     #side bar - parameters
     dashboardSidebar(
         radioButtons("level", "Level:",
@@ -71,7 +72,7 @@ ui <- dashboardPage(
     ),
     ## Body content
     dashboardBody(
-        tags$head(tags$style(HTML(".content {height: 90px; margin: 3px; padding: 0px}"))),  
+        tags$head(tags$style(HTML(".content {height: 85px; margin: 3px; padding: 0px}"))),  
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
             tags$head(tags$style(HTML(".small-box {height: 90px; margin: 3px; padding: 0px}"))),            
