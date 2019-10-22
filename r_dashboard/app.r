@@ -91,7 +91,7 @@ ui <- dashboardPage(
         fluidRow(
             tags$head(tags$style(HTML('.box {margin: 5px;}'))),
             box(title = "Paper Level - Table", width = 6, height = "415px", status = "primary",  DT::dataTableOutput("paper_table")),
-            box(title = "Paper Level - Plot", width = 6, height = "415px", status = "primary",  plotlyOutput("paper_plot"))
+            box(title = "Paper Level - Plot", width = 6, height = "415px", status = "primary",  plotlyOutput("paper_plot", height = "372px"))
         )
     )
 )
