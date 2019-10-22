@@ -73,7 +73,7 @@ ui <- dashboardPage(
     dashboardBody(
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
-            tags$head(tags$style(HTML(".small-box {height: 100px}"))),
+            tags$head(tags$style(HTML(".small-box {height: 80px}"))),
             valueBoxOutput("gcse_kpi", width = 4),
             valueBoxOutput("gce_kpi", width = 4),
             valueBoxOutput("vq_kpi", width = 4)
