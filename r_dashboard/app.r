@@ -74,17 +74,20 @@ ui <- dashboardPage(
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
             tags$head(tags$style(HTML(".small-box {height: 80px}"))),
+            tags$head(tags$style(HTML('.box {margin: 5px;}'))),
             valueBoxOutput("gcse_kpi", width = 4),
             valueBoxOutput("gce_kpi", width = 4),
             valueBoxOutput("vq_kpi", width = 4)
         ),
         #qual level table and plot
         fluidRow(
+            tags$head(tags$style(HTML('.box {margin: 5px;}'))),
             box(title = "Qual Level Cash-In - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
             box(title = "Qual Level Cash-In - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
         ),
         #paper level table and plot
         fluidRow(
+            tags$head(tags$style(HTML('.box {margin: 5px;}'))),
             box(title = "Paper Level - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("paper_table")),
             box(title = "Paper Level - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("paper_plot"))
         )
