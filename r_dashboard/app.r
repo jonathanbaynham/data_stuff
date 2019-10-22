@@ -79,13 +79,13 @@ ui <- dashboardPage(
         ),
         #qual level table and plot
         fluidRow(
-            box(title = "Qual Level Cash-In - Table", width = 6, height = "450px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
-            box(title = "Qual Level Cash-In - Plot", width = 6, height = "450px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
+            box(title = "Qual Level Cash-In - Table", width = 6, height = "420px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
+            box(title = "Qual Level Cash-In - Plot", width = 6, height = "420px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
         ),
         #paper level table and plot
         fluidRow(
-            box(title = "Paper Level - Table", width = 6, height = "450px", status = "primary",  DT::dataTableOutput("paper_table")),
-            box(title = "Paper Level - Plot", width = 6, height = "450px", status = "primary",  plotlyOutput("paper_plot"))
+            box(title = "Paper Level - Table", width = 6, height = "420px", status = "primary",  DT::dataTableOutput("paper_table")),
+            box(title = "Paper Level - Plot", width = 6, height = "420px", status = "primary",  plotlyOutput("paper_plot"))
         )
     )
 )
@@ -148,7 +148,7 @@ server <- function(input, output, session) {
     output$gcse_kpi <- renderValueBox({
                         valueBox(subtitle = "GCSE completed marking",
                                  icon = icon("area-chart") ,
-                                 color = "teal",
+                                 color = "light-blue",
                                  value = paste(rate1,"%"))
                     })
     
@@ -172,7 +172,7 @@ server <- function(input, output, session) {
     output$gce_kpi <- renderValueBox({
         valueBox(subtitle = "GCE completed marking",
                  icon = icon("area-chart") ,
-                 color = "teal",
+                 color = "aqua",
                  value = paste(rate2,"%"))
     })
     
@@ -259,12 +259,12 @@ server <- function(input, output, session) {
                 if (input$ordering == 1) {
                     datatable(qual_table,
                               colnames = col_rename,
-                              options = list(pageLength = 20, scrollY = "200px") )    
+                              options = list(pageLength = 20, scrollY = "225px") )    
                 } else {
                     #if %age then round the % columns to 1 dp
                     datatable(qual_table,
                               colnames = col_rename,                              
-                              options = list(pageLength = 20, scrollY = "200px") ) %>%
+                              options = list(pageLength = 20, scrollY = "225px") ) %>%
                                 formatRound(c('pred_dif_pc', 'percent_Marked_IPA', 'tot_dif_pc'), 1)    
                 }
                 
@@ -373,14 +373,12 @@ server <- function(input, output, session) {
             #if the order by is %age then format the % columns to 1 dp
             if (input$ordering == 1) {
                 datatable(paper_table,
-                          colnames = col_rename,
-                          width = 200,
-                          options = list(pageLength = 20, scrollY = "250px") )    
+                          colnames = col_rename,                          
+                          options = list(pageLength = 20, scrollY = "225px") )    
             } else {
                 datatable(paper_table,
-                          colnames = col_rename,
-                          width = 200,
-                          options = list(pageLength = 20, scrollY = "250px") ) %>%
+                          colnames = col_rename,                          
+                          options = list(pageLength = 20, scrollY = "225px") ) %>%
                     formatRound(c('pred_dif_pc', 'marked_pc'), 1)    
                 
             }
