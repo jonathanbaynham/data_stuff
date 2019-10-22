@@ -71,6 +71,7 @@ ui <- dashboardPage(
     ),
     ## Body content
     dashboardBody(
+        tags$head(tags$style(HTML(".content {height: 90px; margin: 5px; padding: 0px}"))),  
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
             tags$head(tags$style(HTML(".small-box {height: 90px; margin: 5px; padding: 0px}"))),            
@@ -81,14 +82,14 @@ ui <- dashboardPage(
         #qual level table and plot
         fluidRow(
             tags$head(tags$style(HTML('.box {margin: 5px;}'))),
-            box(title = "Qual Level Cash-In - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
-            box(title = "Qual Level Cash-In - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
+            box(title = "Qual Level Cash-In - Table", width = 6, height = "415px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
+            box(title = "Qual Level Cash-In - Plot", width = 6, height = "415px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
         ),
         #paper level table and plot
         fluidRow(
             tags$head(tags$style(HTML('.box {margin: 5px;}'))),
-            box(title = "Paper Level - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("paper_table")),
-            box(title = "Paper Level - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("paper_plot"))
+            box(title = "Paper Level - Table", width = 6, height = "415px", status = "primary",  DT::dataTableOutput("paper_table")),
+            box(title = "Paper Level - Plot", width = 6, height = "415px", status = "primary",  plotlyOutput("paper_plot"))
         )
     )
 )
@@ -262,12 +263,12 @@ server <- function(input, output, session) {
                 if (input$ordering == 1) {
                     datatable(qual_table,
                               colnames = col_rename,
-                              options = list(pageLength = 20) )    
+                              options = list(pageLength = 20, scrollY = "225px") )    
                 } else {
                     #if %age then round the % columns to 1 dp
                     datatable(qual_table,
                               colnames = col_rename,                              
-                              options = list(pageLength = 20) ) %>%
+                              options = list(pageLength = 20, scrollY = "225px") ) %>%
                                 formatRound(c('pred_dif_pc', 'percent_Marked_IPA', 'tot_dif_pc'), 1)    
                 }
                 
