@@ -82,8 +82,8 @@ ui <- dashboardPage(
         #qual level table and plot
         fluidRow(
             tags$head(tags$style(HTML('.box {margin: 5px;} 
-                                       .box-body {height: 372px; margin: 5px; padding: 0px;}
-                                       .qual_cash_in_plot {height: 372px; margin: 0px; padding: 0px;}'
+                                       .box-body {height: 372px; margin: 0px; padding: 0px;}
+                                       .plot-container {height: 372px; margin: 0px; padding: 0px;}'
                                 ))),
             box(title = "Qual Level Cash-In - Table", width = 6, height = "415px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
             box(title = "Qual Level Cash-In - Plot", width = 6, height = "415px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
