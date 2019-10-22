@@ -79,13 +79,13 @@ ui <- dashboardPage(
         ),
         #qual level table and plot
         fluidRow(
-            box(title = "Qual Level Cash-In - Table", width = 6, height = "450px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
-            box(title = "Qual Level Cash-In - Plot", width = 6, height = "450px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
+            box(title = "Qual Level Cash-In - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("qual_cash_in_table")),
+            box(title = "Qual Level Cash-In - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("qual_cash_in_plot"))
         ),
         #paper level table and plot
         fluidRow(
-            box(title = "Paper Level - Table", width = 6, height = "450px", status = "primary",  DT::dataTableOutput("paper_table")),
-            box(title = "Paper Level - Plot", width = 6, height = "450px", status = "primary",  plotlyOutput("paper_plot"))
+            box(title = "Paper Level - Table", width = 6, height = "400px", status = "primary",  DT::dataTableOutput("paper_table")),
+            box(title = "Paper Level - Plot", width = 6, height = "400px", status = "primary",  plotlyOutput("paper_plot"))
         )
     )
 )
