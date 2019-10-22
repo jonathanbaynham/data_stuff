@@ -45,7 +45,7 @@ qual_paper_lookup <-  read_csv("lookup.csv") %>%
 #shinydashboard app UI section
 ui <- dashboardPage(
     #header
-    dashboardHeader(#tags$head(tags$style(HTML(".main_header {height: 35px; margin: 3px; padding: 0px}"))),  
+    dashboardHeader(tags$head(tags$style(HTML(".main_header {height: 35px; margin: 3px; padding: 0px}"))),  
                     title = "Marking Progress"),
     #side bar - parameters
     dashboardSidebar(
@@ -74,7 +74,7 @@ ui <- dashboardPage(
     dashboardBody(         
         #first row - mark completion kpi for gcse, gce and vq
         fluidRow(
-            tags$head(tags$style(HTML(".small-box {height: 90px; margin: 3px; padding: 0px}"))),            
+            tags$head(tags$style(HTML(".small-box {height: 80px; margin: 3px; padding: 0px}"))),            
             valueBoxOutput("gcse_kpi", width = 4),
             valueBoxOutput("gce_kpi", width = 4),
             valueBoxOutput("vq_kpi", width = 4)
@@ -300,7 +300,7 @@ server <- function(input, output, session) {
                         plot_ly(x= ~date, y= ~Mark_In, type = "scatter", mode = "lines+markers", name="Marked") %>%
                         add_trace(y = ~marked_prediction, name="if linear", mode = "Lines") %>%
                         add_lines(x=c(Awarding, Awarding), y=c(0, max), name = "Award Date") %>%
-                        layout(yaxis = list(title = "Candidates Marked"), xaxis = list(title = "Date"))
+                        layout(yaxis = list(title = "Candidates Marked"), xaxis = list(title = "Date"), title=paste('Specification: ', qual_code))
             }
             
         })
@@ -411,8 +411,8 @@ server <- function(input, output, session) {
                 
             #create plot
             pp <- paper_plot_data %>% 
-                    plot_ly(x= ~date, y= ~marked_actual, type = "scatter", mode = "lines+markers", name="marked") %>%
-                    add_trace(y = ~marked_prediction, name="if linear", mode = "lines") %>%
+                    plot_ly(x= ~date, y= ~marked_actual, type = "scatter", mode = "lines+markers", name="Marked") %>%
+                    add_trace(y = ~marked_prediction, name="If Linear", mode = "lines") %>%
                     add_lines(x=c(Awarding, Awarding), y=c(0, max), name = "Award Date") %>%
                     layout(yaxis = list(title = "Candidates Marked"), yaxis = list(title = "Date"), title=paste(paper_name, paper_code))
             
